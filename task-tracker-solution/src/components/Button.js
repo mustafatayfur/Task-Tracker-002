@@ -1,4 +1,3 @@
-
 const Button = ({ color, text, handleClickFromHeader }) => {
     //   const handleClick = () => {
     //     console.log("Click with handleClick");
