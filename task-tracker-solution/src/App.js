@@ -26,17 +26,40 @@ function App() {
     },
   ]);
 
+  const [showAddTask, setShowAddTask] = useState(false);
+
+  // ADD TASK
+  const addTask = (newTask) => {
+    // console.log("Add Task From App.js");
+    const id = Math.floor(Math.random() * 100) + 1;
+    const addNewTask = { id, ...newTask };
+    setTasks([...tasks, addNewTask]);
+  };
+
   // DELETE TASK
   const deleteTask = (deletedTaskId) => {
     // console.log("delete", deletedTaskId);
     setTasks(tasks.filter((task) => task.id !== deletedTaskId));
   };
 
+  
+  // TO DO FOR YOU
+
   return (
     <div className="container">
-      <Header title="TASK TRACKER" />
-      <AddTask/>
-      <Tasks tasks={tasks} deleteTask={deleteTask} />
+      <Header
+        title="TASK TRACKER"
+        showAddTask={showAddTask}
+        toggleShow={toggleShow}
+      />
+
+      {showAddTask && <AddTask addTask={addTask} />}
+
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} deleteTask={deleteTask} toggleDone={toggleDone} />
+      ) : (
+        <p style={{ textAlign: "center" }}>NO TASK TO SHOW</p>
+      )}
     </div>
   );
 }

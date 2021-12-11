@@ -1,7 +1,7 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Button from "./Button";
 
-const Header = ({ title = "Task Tracker" }) => {
+const Header = ({ title = "Task Tracker", toggleShow, showAddTask }) => {
   const handleClick = () => {
     console.log("Click with handleClick from Header");
   };
@@ -9,9 +9,9 @@ const Header = ({ title = "Task Tracker" }) => {
     <header className="header">
       <h1>{title}</h1>
       <Button
-        color="purple"
-        text="Show Add Task Bar"
-        handleClickFromHeader={handleClick}
+        color={showAddTask ? "red" : "purple"}
+        text={showAddTask ? "Close Add Task Bar" : "Show Add Task Bar"}
+        toggleShow={toggleShow}
       />
     </header>
   );
