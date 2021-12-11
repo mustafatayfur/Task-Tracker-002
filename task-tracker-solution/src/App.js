@@ -42,7 +42,19 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== deletedTaskId));
   };
 
-  
+  //TOGGLE DONE
+  const toggleDone = (toggleDoneId) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === toggleDoneId ? { ...task, isDone: !task.isDone } : task
+      )
+    );
+  };
+
+  // SHOW ADD TASK
+  const toggleShow = () => setShowAddTask(!showAddTask);
+
+  // DELETE ALL TASKS
   // TO DO FOR YOU
 
   return (
