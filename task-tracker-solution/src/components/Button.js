@@ -7,7 +7,7 @@ const Button = ({color, text, handleClickFromHeader}) => {
 
     return (
         <div>
-            <button className='btn'  onClick={
+            <button className='btn' style={{backgroundColor: color}} onClick={
                 ()=> console.log("click")}>
                     {handleClickFromHeader}
                 {text}
